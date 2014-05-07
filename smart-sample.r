@@ -26,9 +26,6 @@ print(yowPlot)
 # remove -1 ratings that already exists in the dataset
 yow <- yow[yow$user_like != -1]
 
-# create TimeOnPage * TimeOnMouse
-yow$PageTimesMouse <- yow$TimeOnPage * yow$TimeOnMouse
-
 # write occurences to file to be modified in python
 write.csv(yow, file="datasets/yow-userstudy/python/yow-data.csv", row.names=FALSE, na="0", quote=FALSE)
 
@@ -55,7 +52,7 @@ uniq$combined <- paste(uniq$user_id,paste("_",uniq$DOC_ID, sep=""), sep="")
 
 # make feedback implicit
 yow[yow$combined %in% uniq$combined, user_like := -1]
-yow <- yow[, 1:6, with=FALSE]
+yow <- yow[, 1:5, with=FALSE]
 
 # TimeOnPage boxplot yowSample
 smartSample <- qplot(factor(user_like), TimeOnPage, data=yow, geom="boxplot", xlab="Rating",
@@ -74,8 +71,5 @@ yowExplicit <- yowExplicit[, 1:3, with=FALSE]
 # write to file
 write.csv(yowExplicit, file="datasets/yow-userstudy/yow-smart-sample-explicit.csv", row.names=FALSE, na="0", quote=FALSE)
 
-# remove -1 from user_like/rating
-yowExplicit <- yow[yow$user_like != -1]
-yowExplicit <- yowExplicit[, 1:3, with=FALSE]
 
 
