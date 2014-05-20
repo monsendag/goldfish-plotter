@@ -21,8 +21,8 @@ yowImpl <- yow[yow$TimeOnPage > 0 | yow$TimeOnMouse > 0]
 # plot rating frequencies
 ratings <- yowEx[, 3, with=FALSE]
 ratings_freq <- qplot(factor(user_like), data=ratings, geom="bar", xlab="Rating", ylab="Frequency") +
-                        theme(axis.title.x=element_text(size=25), axis.title.y=element_text(size=25),
-                              axis.text.x=element_text(size=20), axis.text.y=element_text(size=20))
+                        theme(axis.title.x=element_text(size=40), axis.title.y=element_text(size=40, vjust=0.35),
+                              axis.text.x=element_text(size=30), axis.text.y=element_text(size=30))
 ratings_freq <- ratings_freq + scale_y_continuous(breaks=seq(0,3000, 500)) + coord_cartesian(ylim=c(0,3000))
 plot(ratings_freq)
 
@@ -31,8 +31,8 @@ ggsave(ratings_freq, file="graphs/yow-userstudy/yowRatingsFrequency.pdf", width=
 # TimeOnPage boxplot yowSample
 smartPlot <- qplot(factor(user_like), TimeOnPage, data=yowEx, geom="boxplot", xlab="Rating",
                    ylab="Time spent on a page", outlier.shape=NA) + 
-  theme(axis.title.x=element_text(size=25), axis.title.y=element_text(size=25),
-        axis.text.x=element_text(size=20), axis.text.y=element_text(size=20))
+  theme(axis.title.x=element_text(size=40), axis.title.y=element_text(size=40, vjust=0.35),
+        axis.text.x=element_text(size=30), axis.text.y=element_text(size=30))
 smartPlot <- smartPlot + scale_y_discrete(breaks=seq(0,150000, 15000)) + coord_cartesian(ylim=c(0,150000))
 print(smartPlot)
 ggsave(smartPlot, file="graphs/yow-userstudy/yowSmartTimeOnPageBoxplotExplicit.pdf", width=10, height=8)

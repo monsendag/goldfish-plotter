@@ -17,8 +17,8 @@ smart <- fread("datasets/yow-userstudy/python/yow-smart-sample-implicit-3.csv", 
 # TimeOnPage boxplot yowSample
 yowPlot <- qplot(factor(user_like), TimeOnPage, data=yow, geom="boxplot", xlab="Rating",
                  ylab="Time spent on a page", outlier.shape=NA) + 
-            theme(axis.title.x=element_text(size=25), axis.title.y=element_text(size=25),
-                  axis.text.x=element_text(size=20), axis.text.y=element_text(size=20))
+  theme(axis.title.x=element_text(size=40), axis.title.y=element_text(size=40, vjust=0.35),
+        axis.text.x=element_text(size=30), axis.text.y=element_text(size=30))
 yowPlot <- yowPlot + scale_y_discrete(breaks=seq(0,150000, 15000)) + coord_cartesian(ylim=c(0,150000))
 print(yowPlot)
 ggsave(yowPlot, file="graphs/yow-userstudy/yowTimeOnPageBoxplotCompare.pdf", width=10, height=8)
@@ -26,8 +26,8 @@ ggsave(yowPlot, file="graphs/yow-userstudy/yowTimeOnPageBoxplotCompare.pdf", wid
 # TimeOnPage boxplot yowSample
 smartPlot <- qplot(factor(user_like), TimeOnPage, data=smart, geom="boxplot", xlab="Rating",
                  ylab="Time spent on a page", outlier.shape=NA) + 
-            theme(axis.title.x=element_text(size=25), axis.title.y=element_text(size=25),
-                  axis.text.x=element_text(size=20), axis.text.y=element_text(size=20))
+  theme(axis.title.x=element_text(size=40), axis.title.y=element_text(size=40, vjust=0.35),
+        axis.text.x=element_text(size=30), axis.text.y=element_text(size=30))
 smartPlot <- smartPlot + scale_y_discrete(breaks=seq(0,150000, 15000)) + coord_cartesian(ylim=c(0,150000))
 print(smartPlot)
 ggsave(smartPlot, file="graphs/yow-userstudy/yowSmartTimeOnPageBoxplotCompare.pdf", width=10, height=8)
