@@ -26,3 +26,4 @@ plot <- plot + geom_point(aes(shape=factor(type)), size = 4) +
 
 print(plot)
 ggsave(plot, file="graphs/SVD/latentSpaceExample.pdf", width=10, height=8)
+ggsave(plot, file="graphs/SVD/latentSpaceExample.png", dpi=600)
